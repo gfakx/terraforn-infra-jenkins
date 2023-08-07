@@ -32,7 +32,7 @@ pipeline {
         }
         stage("Deploy to EKS") {
             when {
-               expression { params.apply }
+               expression { params.action == 'apply'}
             }
             steps {
                   sh "aws eks update-kubeconfig --name eks_cluster"
